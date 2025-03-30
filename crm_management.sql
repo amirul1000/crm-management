@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2025 at 10:58 AM
+-- Generation Time: Mar 30, 2025 at 11:04 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -341,9 +341,16 @@ CREATE TABLE `customers` (
   `address` text DEFAULT NULL,
   `company` varchar(150) DEFAULT NULL,
   `website` varchar(255) DEFAULT NULL,
-  `created_by` int(11) DEFAULT NULL,
+  `created_by_users_id` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `name`, `email`, `phone`, `address`, `company`, `website`, `created_by_users_id`, `created_at`) VALUES
+(2, 'John Smith', 'aa@aa.com', '04343434', '343434', 'ABC', '', 2, '2025-03-30 05:03:58');
 
 -- --------------------------------------------------------
 
@@ -454,7 +461,7 @@ ALTER TABLE `country`
 ALTER TABLE `customers`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`),
-  ADD KEY `created_by` (`created_by`);
+  ADD KEY `created_by` (`created_by_users_id`);
 
 --
 -- Indexes for table `deals`
@@ -505,7 +512,7 @@ ALTER TABLE `country`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `deals`
@@ -539,7 +546,7 @@ ALTER TABLE `contacts`
 -- Constraints for table `customers`
 --
 ALTER TABLE `customers`
-  ADD CONSTRAINT `customers_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`) ON DELETE SET NULL;
+  ADD CONSTRAINT `customers_ibfk_1` FOREIGN KEY (`created_by_users_id`) REFERENCES `users` (`id`) ON DELETE SET NULL;
 
 --
 -- Constraints for table `deals`

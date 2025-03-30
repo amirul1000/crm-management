@@ -17,7 +17,13 @@
 
 <tr><td>Website</td><td><?php echo $c['website']; ?></td></tr>
 
-<tr><td>Created By</td><td><?php echo $c['created_by']; ?></td></tr>
+<tr><td>Created By Users</td><td><?php
+									   $this->CI =& get_instance();
+									   $this->CI->load->database();	
+									   $this->CI->load->model('Users_model');
+									   $dataArr = $this->CI->Users_model->get_users($c['created_by_users_id']);
+									   echo $dataArr['name'];?>
+									</td></tr>
 
 <tr><td>Created At</td><td><?php echo $c['created_at']; ?></td></tr>
 

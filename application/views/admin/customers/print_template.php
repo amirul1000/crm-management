@@ -37,7 +37,7 @@ Date: <?php echo date("Y-m-d");?>
 <th>Address</th>
 <th>Company</th>
 <th>Website</th>
-<th>Created By</th>
+<th>Created By Users</th>
 
     </tr>
 	<?php foreach($customers as $c){ ?>
@@ -48,7 +48,13 @@ Date: <?php echo date("Y-m-d");?>
 <td><?php echo $c['address']; ?></td>
 <td><?php echo $c['company']; ?></td>
 <td><?php echo $c['website']; ?></td>
-<td><?php echo $c['created_by']; ?></td>
+<td><?php
+									   $this->CI =& get_instance();
+									   $this->CI->load->database();	
+									   $this->CI->load->model('Users_model');
+									   $dataArr = $this->CI->Users_model->get_users($c['created_by_users_id']);
+									   echo $dataArr['name'];?>
+									</td>
 
     </tr>
 	<?php } ?>

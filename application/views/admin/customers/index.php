@@ -43,7 +43,7 @@
 <th>Address</th>
 <th>Company</th>
 <th>Website</th>
-<th>Created By</th>
+<th>Created By Users</th>
 
 		<th>Actions</th>
     </tr>
@@ -55,7 +55,13 @@
 <td><?php echo $c['address']; ?></td>
 <td><?php echo $c['company']; ?></td>
 <td><?php echo $c['website']; ?></td>
-<td><?php echo $c['created_by']; ?></td>
+<td><?php
+									   $this->CI =& get_instance();
+									   $this->CI->load->database();	
+									   $this->CI->load->model('Users_model');
+									   $dataArr = $this->CI->Users_model->get_users($c['created_by_users_id']);
+									   echo $dataArr['name'];?>
+									</td>
 
 		<td>
             <a href="<?php echo site_url('admin/customers/details/'.$c['id']); ?>"  class="action-icon"> <i class="zmdi zmdi-eye"></i></a>

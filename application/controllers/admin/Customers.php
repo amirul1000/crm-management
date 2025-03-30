@@ -76,7 +76,7 @@ class Customers extends CI_Controller{
 'address' => html_escape($this->input->post('address')),
 'company' => html_escape($this->input->post('company')),
 'website' => html_escape($this->input->post('website')),
-'created_by' => html_escape($this->input->post('created_by')),
+'created_by_users_id' => html_escape($this->input->post('created_by_users_id')),
 'created_at' =>$created_at,
 
 				);
@@ -161,7 +161,7 @@ $this->db->or_like('phone', $key, 'both');
 $this->db->or_like('address', $key, 'both');
 $this->db->or_like('company', $key, 'both');
 $this->db->or_like('website', $key, 'both');
-$this->db->or_like('created_by', $key, 'both');
+$this->db->or_like('created_by_users_id', $key, 'both');
 $this->db->or_like('created_at', $key, 'both');
 
 
@@ -185,7 +185,7 @@ $this->db->or_like('phone', $key, 'both');
 $this->db->or_like('address', $key, 'both');
 $this->db->or_like('company', $key, 'both');
 $this->db->or_like('website', $key, 'both');
-$this->db->or_like('created_by', $key, 'both');
+$this->db->or_like('created_by_users_id', $key, 'both');
 $this->db->or_like('created_at', $key, 'both');
 
 		$config['total_rows'] = $this->db->from("customers")->count_all_results();
@@ -235,7 +235,7 @@ $this->db->or_like('created_at', $key, 'both');
 		   $customersData = $this->Customers_model->get_all_customers();
 		   // file creation 
 		   $file = fopen('php://output', 'w');
-		   $header = array("Id","Name","Email","Phone","Address","Company","Website","Created By","Created At"); 
+		   $header = array("Id","Name","Email","Phone","Address","Company","Website","Created By Users Id","Created At"); 
 		   fputcsv($file, $header);
 		   foreach ($customersData as $key=>$line){ 
 			 fputcsv($file,$line); 

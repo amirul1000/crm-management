@@ -41,10 +41,26 @@
           </div> 
            </div>
 <div class="form-group"> 
-          <label for="Created By" class="col-md-4 control-label">Created By</label> 
-          <div class="col-md-8"> 
-           <input type="text" name="created_by" value="<?php echo ($this->input->post('created_by') ? $this->input->post('created_by') : $customers['created_by']); ?>" class="form-control" id="created_by" /> 
-          </div> 
+                                    <label for="Created By Users" class="col-md-4 control-label">Created By Users</label> 
+         <div class="col-md-8"> 
+          <?php 
+             $this->CI =& get_instance(); 
+             $this->CI->load->database();  
+             $this->CI->load->model('Users_model'); 
+             $dataArr = $this->CI->Users_model->get_all_users(); 
+          ?> 
+          <select name="created_by_users_id"  id="created_by_users_id"  class="form-control"/> 
+            <option value="">--Select--</option> 
+            <?php 
+             for($i=0;$i<count($dataArr);$i++) 
+             {  
+            ?> 
+            <option value="<?=$dataArr[$i]['id']?>" <?php if($customers['created_by_users_id']==$dataArr[$i]['id']){ echo "selected";} ?>><?=$dataArr[$i]['name']?></option> 
+            <?php 
+             } 
+            ?> 
+          </select> 
+         </div> 
            </div>
 
    </div>
