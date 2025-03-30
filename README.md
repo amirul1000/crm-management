@@ -6,3 +6,5 @@ Features Covered in this CRM Database
 ✅ Contacts – Maintains contacts linked to customers.
 ✅ Deals – Tracks sales opportunities and stages.
 ✅ Tasks – Assigns tasks to users related to deals.
+
+<img src="1.png">
